@@ -1,0 +1,4 @@
+node_modules
+
+public/js/p5.min.js
+public/js/p5.sound.min.js

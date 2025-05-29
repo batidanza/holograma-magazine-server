@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "iqSTHHGOuaeSVHIrCNhPIQMwEEvxyulk",
+    "database": "railway",
+    "host": "interchange.proxy.rlwy.net",
+    "dialect": "postgres",
+    "port": 36669
+  },
+  "test": {
+    "username": "postgres",
+    "password": "iqSTHHGOuaeSVHIrCNhPIQMwEEvxyulk",
+    "database": "railway",
+    "host": "interchange.proxy.rlwy.net",
+    "dialect": "postgres",
+    "port": 36669
+  },
+  "production": {
+    "username": "postgres",
+    "password": "iqSTHHGOuaeSVHIrCNhPIQMwEEvxyulk",
+    "database": "railway",
+    "host": "interchange.proxy.rlwy.net",
+    "dialect": "postgres",
+    "port": 36669
+  }
+}
