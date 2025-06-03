@@ -7,9 +7,9 @@ const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const productController = require("../controllers/productController");
 
 cloudinary.config({
-  cloud_name: "dpnrapsvi",
-  api_key: "874593837933416",
-  api_secret: "c_a2SUynA5J4O6y5yFCbL6HzADA",
+  cloud_name: "dujuk4cga",
+  api_key: "147193366683265",
+  api_secret: "zDMUzq9ANImmuLlKNU5oFwwOFXE",
 });
 
 const imageCloudinaryStorage = new CloudinaryStorage({
@@ -31,12 +31,6 @@ router.get("/search", productController.searchProducts);
 router.post("/payment", productController.payment);
 
 router.get("/byCategory/:category_id", productController.getProductsByCategory);
-
-router.put(
-  "/update/:id",
-  imageCloudinaryUpload.array("image"),
-  productController.updateProduct
-);
 
 router.post(
   "/create_product",

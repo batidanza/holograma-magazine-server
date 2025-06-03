@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.TEXT,
           allowNull: true, 
         },
+        image: {
+          type: DataTypes.ARRAY(DataTypes.STRING),
+          allowNull: true,
+        },
         type: {
           type: DataTypes.ENUM('text', 'photo', 'video', 'music'),
           allowNull: false,
@@ -36,11 +40,8 @@ module.exports = (sequelize, DataTypes) => {
         as: 'author',
       });
   
-      Article.hasMany(models.Media, {
-        foreignKey: 'article_id',
-        as: 'media_files',
-      });
-  
+      // Se elimina la relación con Media
+      
       Article.belongsToMany(models.Category, {
         through: 'ArticleCategory',
         foreignKey: 'article_id',
