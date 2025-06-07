@@ -19,6 +19,14 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.ARRAY(DataTypes.STRING),
           allowNull: true,
         },
+        audio: {
+          type: DataTypes.ARRAY(DataTypes.STRING),
+          allowNull: true,
+        },
+        video: {
+          type: DataTypes.ARRAY(DataTypes.STRING),
+          allowNull: true,
+        },
         type: {
           type: DataTypes.ENUM('text', 'photo', 'video', 'music'),
           allowNull: false,
