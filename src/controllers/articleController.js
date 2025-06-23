@@ -57,7 +57,7 @@ const getArticleById = async (req, res) => {
 const createArticle = async (req, res) => {
   console.log(req.body);
   try {
-    const { title, content, type, author_uid, categories } = req.body;
+    const { title, artist, content, type, author_uid, categories } = req.body;
 
     // Validar datos requeridos
     if (!title || !type || !author_uid) {
@@ -75,6 +75,7 @@ const createArticle = async (req, res) => {
       title,
       content,
       type,
+      artist,
       author_uid,
       image: imageUrls,
     });
@@ -121,7 +122,7 @@ const updateArticle = async (req, res) => {
 
   try {
     const articleId = req.params.articleId;
-    const { title, content, type, author_uid, categories } = req.body;
+    const { title, artist, content, type, author_uid, categories } = req.body;
 
     // Obtener el nuevo orden de imágenes si se proporciona
     let imageOrder = [];
@@ -142,6 +143,7 @@ const updateArticle = async (req, res) => {
     // Construir objeto de actualización
     const updateData = {};
     if (title !== undefined) updateData.title = title;
+    if (artist !== undefined) updateData.artist = artist;
     if (content !== undefined) updateData.content = content;
     if (type !== undefined) updateData.type = type;
     if (author_uid !== undefined) updateData.author_uid = author_uid;

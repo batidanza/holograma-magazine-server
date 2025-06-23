@@ -7,6 +7,10 @@ module.exports = (sequelize, DataTypes) => {
           autoIncrement: true,
           primaryKey: true,
         },
+        artist: {
+          type: DataTypes.STRING(255),
+          allowNull: true,
+        },
         title: {
           type: DataTypes.STRING(255),
           allowNull: false,
