@@ -9,3 +9,4 @@ router.get("/category", categoryController.getCategory);
 router.get("/category/:categoryId", categoryController.getCategoryById);
 
 module.exports = router;
+
