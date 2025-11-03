@@ -5,14 +5,12 @@ const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const cloudinary = require("cloudinary").v2;
 const articleController = require("../controllers/articleController");
 
-// Configuración de Cloudinary
 cloudinary.config({
   cloud_name: "dujuk4cga",
   api_key: "147193366683265",
   api_secret: "zDMUzq9ANImmuLlKNU5oFwwOFXE",
 });
 
-// Configuración de almacenamiento en Cloudinary
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
@@ -23,15 +21,22 @@ const storage = new CloudinaryStorage({
 
 const upload = multer({ storage: storage });
 
-// Rutas para artículos
 router.get("/articles", articleController.getAllArticles);
 router.get("/:articleId", articleController.getArticleById);
-router.post("/create_article", upload.array("image"), articleController.createArticle);
+
+const uploadArticleMedia = upload.fields([
+  { name: "image", maxCount: 20 },
+  { name: "audio", maxCount: 20 },
+  { name: "video", maxCount: 20 },
+]);
+
 router.post(
-  "/:articleId",
-  upload.array("image"),
-  articleController.updateArticle
+  "/create_article",
+  uploadArticleMedia,
+  articleController.createArticle
 );
+router.post("/:articleId", uploadArticleMedia, articleController.updateArticle);
+
 router.delete("/:articleId", articleController.deleteArticle);
 router.post(
   "/:articleId/images",
@@ -39,5 +44,27 @@ router.post(
   articleController.addImagesToArticle
 );
 router.delete("/:articleId/images", articleController.deleteImage);
+
+router.post(
+  "/:articleId/audio",
+  upload.array("audio"),
+  articleController.uploadAudioToArticle
+);
+router.put(
+  "/:articleId/audio",
+  upload.array("audio"),
+  articleController.editAudioOfArticle
+);
+
+router.post(
+  "/:articleId/video",
+  upload.array("video"),
+  articleController.uploadVideoToArticle
+);
+router.put(
+  "/:articleId/video",
+  upload.array("video"),
+  articleController.editVideoOfArticle
+);
 
 module.exports = router;
